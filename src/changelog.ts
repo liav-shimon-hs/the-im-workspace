@@ -8,6 +8,13 @@ export interface ChangelogEntry {
 /** Newest first. Add an entry here whenever something new ships — the bell picks it up automatically. */
 export const changelog: ChangelogEntry[] = [
   {
+    id: "2026-08-02-notifications-panel",
+    title: "Notifications panel",
+    description:
+      "The bell now opens a real panel with Unread/Read tabs and a menu to mark all as read or clear all notifications, instead of auto-clearing on open.",
+    date: "2026-08-02",
+  },
+  {
     id: "2026-08-02-suggestion-box",
     title: "Suggestion box",
     description:

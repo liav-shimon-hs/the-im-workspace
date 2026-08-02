@@ -54,7 +54,7 @@ export default function Sidebar({
         <div className="flex items-center gap-2">
           <span className="text-base">📮</span>
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Click here to help improve
+            Send us feedback
           </span>
         </div>
         <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">

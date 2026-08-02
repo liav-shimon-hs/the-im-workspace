@@ -20,7 +20,7 @@ export default function SuggestionModal({ onClose }: { onClose: () => void }) {
       >
         <div className="flex items-center gap-2">
           <span className="text-lg">📮</span>
-          <h3 className="text-gray-900 dark:text-white font-medium">Click here to help improve</h3>
+          <h3 className="text-gray-900 dark:text-white font-medium">Send us feedback</h3>
         </div>
         <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
           Add your suggestion on how we can improve the dashboard
