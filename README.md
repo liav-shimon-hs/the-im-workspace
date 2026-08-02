@@ -13,6 +13,21 @@ npm run dev
 
 Opens on `http://localhost:5174`.
 
+## Deployment
+
+Hosted on GitHub Pages. `.github/workflows/deploy.yml` builds and deploys on
+every push to `main` — no manual steps once it's set up. Only people with
+push access to the repo can change what's deployed; viewing the published
+site stays open to anyone with the link.
+
+`vite.config.ts` sets `base: '/the-im-workspace/'` for production builds only
+(local dev stays at `/`) — if the repo is ever renamed, update that path and
+GitHub Pages' expected URL to match.
+
+One-time setup, after creating the repo (Settings → Pages → Source →
+"GitHub Actions"): the first push to `main` triggers the workflow and
+publishes to `https://<username>.github.io/the-im-workspace/`.
+
 ## Theme
 
 Light/dark, toggled from the header (persisted in `localStorage`, defaults to
