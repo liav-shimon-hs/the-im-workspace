@@ -33,6 +33,19 @@ export function markAllSeen(allIds: string[]) {
   writeSet(SEEN_KEY, new Set(allIds));
 }
 
+/** Adds to the existing seen set, unlike markAllSeen which replaces it. */
+export function markSeen(ids: string[]) {
+  const seen = getSeenIds();
+  ids.forEach((id) => seen.add(id));
+  writeSet(SEEN_KEY, seen);
+}
+
+export function markUnseen(id: string) {
+  const seen = getSeenIds();
+  seen.delete(id);
+  writeSet(SEEN_KEY, seen);
+}
+
 export function dismissAll(allIds: string[]) {
   writeSet(DISMISSED_KEY, new Set(allIds));
 }
