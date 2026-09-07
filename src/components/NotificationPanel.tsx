@@ -19,6 +19,7 @@ export default function NotificationPanel({ onClose }: { onClose: () => void }) 
   const [dismissed, setDismissed] = useState(() => getDismissedIds());
   const [pendingRead, setPendingRead] = useState<Set<string>>(new Set());
   const [page, setPage] = useState(0);
+  const [justUnread, setJustUnread] = useState<string | null>(null);
 
   const visible = changelog.filter((c) => !dismissed.has(c.id));
   const entries = visible.filter((c) => (tab === "unread" ? !seen.has(c.id) : seen.has(c.id)));
@@ -29,11 +30,13 @@ export default function NotificationPanel({ onClose }: { onClose: () => void }) 
   const switchTab = (t: "unread" | "read") => {
     setTab(t);
     setPage(0);
+    setJustUnread(null);
   };
 
   const handleCardClick = (id: string) => {
     if (tab === "unread") {
       setPendingRead((prev) => new Set(prev).add(id));
+      setJustUnread(null);
     }
   };
 
@@ -45,6 +48,9 @@ export default function NotificationPanel({ onClose }: { onClose: () => void }) 
       next.delete(id);
       return next;
     });
+    setTab("unread");
+    setPage(0);
+    setJustUnread(id);
   };
 
   const handleClose = () => {
@@ -128,6 +134,7 @@ export default function NotificationPanel({ onClose }: { onClose: () => void }) 
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {pageEntries.map((entry) => {
             const isUnread = tab === "unread" && !pendingRead.has(entry.id);
+            const isJustUnread = entry.id === justUnread;
             return (
               <button
                 key={entry.id}
@@ -137,7 +144,7 @@ export default function NotificationPanel({ onClose }: { onClose: () => void }) 
                   isUnread
                     ? "border-wdorange-200 dark:border-wdorange-500/30 bg-wdorange-50/40 dark:bg-wdorange-500/5"
                     : "border-gray-200 dark:border-gray-700"
-                }`}
+                } ${isJustUnread ? "ring-2 ring-wdorange-400" : ""}`}
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 min-w-0">

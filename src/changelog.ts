@@ -8,6 +8,13 @@ export interface ChangelogEntry {
 /** Newest first. Add an entry here whenever something new ships — the bell picks it up automatically. */
 export const changelog: ChangelogEntry[] = [
   {
+    id: "2026-09-07-notifications-fixes-and-brain-cards",
+    title: "Notification fixes & 2 new Sync Actions cards",
+    description:
+      "Read/unread now tracks correctly across tabs, with a highlight when you mark something unread again. Added Brain batch application tasks runner and Run fast fetch full indexing, each with cell/environment pickers.",
+    date: "2026-09-07",
+  },
+  {
     id: "2026-08-02-notifications-panel-v2",
     title: "Notifications panel: click-to-read & paging",
     description:

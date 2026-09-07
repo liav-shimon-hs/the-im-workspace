@@ -132,6 +132,56 @@ export const features: Feature[] = [
     },
   },
   {
+    id: "brain-batch-application-tasks-runner",
+    tab: "sync-action",
+    title: "Brain batch application tasks runner",
+    subtitle: "wf-brain-batch-application-tasks-runner",
+    description: "Trigger the Brain batch application tasks workflow for a cell and environment.",
+    icon: "🧠",
+    accent: "blue",
+    picker: {
+      fields: [
+        {
+          id: "environment",
+          label: "Environment",
+          options: ENVIRONMENTS,
+        },
+        {
+          id: "cell",
+          label: "Cell",
+          options: CELLS.map((c) => ({ label: c, value: c })),
+        },
+      ],
+      buildUrl: (v) =>
+        `https://argoworkflows-${v.cell}.${v.environment}.omcomcom.com/workflows/wf-brain-batch-application-tasks-runner?limit=50&sidePanel=submit-new-workflow`,
+    },
+  },
+  {
+    id: "brain-fast-fetch-full-indexing",
+    tab: "sync-action",
+    title: "Run fast fetch full indexing",
+    subtitle: "wf-brain-fast-fetch-full-indexing",
+    description: "Trigger the Brain fast fetch full indexing workflow for a cell and environment.",
+    icon: "⚡",
+    accent: "orange",
+    picker: {
+      fields: [
+        {
+          id: "environment",
+          label: "Environment",
+          options: ENVIRONMENTS,
+        },
+        {
+          id: "cell",
+          label: "Cell",
+          options: CELLS.map((c) => ({ label: c, value: c })),
+        },
+      ],
+      buildUrl: (v) =>
+        `https://argoworkflows-${v.cell}.${v.environment}.omcomcom.com/workflows/wf-brain-fast-fetch-full-indexing?limit=50&sidePanel=submit-new-workflow`,
+    },
+  },
+  {
     id: "screenit",
     tab: "sync-action",
     title: "Screen It",
